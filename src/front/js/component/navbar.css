@@ -6,13 +6,23 @@
     flex-direction: row;
 
   }
-  
+  /* L.E.A. BRAND */
   .navbar-brand {
     display: flex;
-   align-items: center;
+    flex-direction: row;
+    height: 83px;
+    margin-right: auto;
+    min-width:13em;
+    position: relative;
+  }
+  /* L.E.A. LOGO */
+  .navbar-logo {
+    position: absolute;
+    bottom: 0;
+    margin: 3px;
   
   }
-
+/*  LOGO IMAGE */
   #navbarImgLogo {
     width: 60px;
     height: 60px;
@@ -20,51 +30,50 @@
     border-radius: 50%;
   }
 
-  .navbar-logo {
-    border: 1px dotted;
+  /* LIBERA EL ARTE */
+  .brand-text {
+    padding-left: 5px;
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    right: 0;
   }
 
+/* NAV LINK CONTAINER */
   .navbar-start {
-    display: inline-block;
-    margin: 5px;
-    /* position:relative;
-    bottom: 0; */
+    margin-right: 10px;
+    position: relative;
+    min-width:12em;
   }
 
-  .navbar-start a{
-    padding: 5px;
-    /* position:relative;
-    bottom: 0; */
+  .browse-nav-link{
+    position: absolute;
+    bottom: 0;
   }
 
+  .mission-nav-link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+/* PROFILE AND DROPDOWN CONTAINER */
+  .navbar-end {
+    margin-left: 5px;
+    display:inline-block;
+  }
+
+/* USER PROFILE CONTAINER */
   .user-navbar-info {
     display: block;
    
   }
-
-  .navbar-end {
-    margin: auto;
-
-    display:inline-block;
-  }
-  
-  .navbar-item {
-    cursor: crosshair;
-    color: #fc6238;
-    text-decoration: none;
-    font-size: small;
-    text-align:left;
-    
-    border: black 1px dotted;
-  }
-
-  .navbar-item:hover {
-    color: #0b0909;
-  }
-  
-  .brand-text {
-    padding-left: 5px;
-    border: 1px dotted;
+/* NAV PROFILE THUMBNAIL */
+  #nav-profpic {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .navbar-dropdown-link {
@@ -74,7 +83,26 @@
     font-size: small;
     width: 100px;
     align-items: center;
-    
+  }
+  
+  .navbar-item {
+    cursor: crosshair;
+    color: #fc6238;
+    text-decoration: none;
+    font-size: small;
+    text-align:left;
+  }
+
+  .navbar-item:hover {
+    color: #0b0909;
+  }
+
+
+  .navbar-menu {
+    display:inline-flex;
+    margin-right: 10px;
+    min-width: 250px;
+    height: 83px;
   }
 
   .dropdown-item {
@@ -93,24 +121,14 @@
     position:absolute;
     background-color: #fde29eaf;
     text-decoration: none;
-    width: 100px;
+    width: 40%;
     margin: auto;   
-    padding: 2px;
+    /* padding: 2px; */
     transform: translateX(-20%);
   }
   
-  #nav-profpic {
-    width: 60px;
-    height: 60px;
-  }
-  
+ 
   .has-dropdown:hover .navbar-dropdown {
     display: block;
     cursor: crosshair;
-  }
-
-  .navbar-menu {
-    display: flex;
-    min-width: 250px;
-    height: 100%;
   }

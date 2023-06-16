@@ -12,15 +12,23 @@ export const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-brand">
           <div className="navbar-logo">
-            <img className="" href="#top" src="https://i.ibb.co/v3992Zz/lea-logo.jpg" id="navbarImgLogo"/>
+            <img className="" href="#top" 
+            src="https://i.ibb.co/v3992Zz/lea-logo.jpg" 
+            id="navbarImgLogo"/>
           </div>
           <h2 className="brand-text">Libera El Arte</h2>
         </div>
 
         <div className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item" href="#">Browse Collections</a>
-            <a className="navbar-item" href="#">Our Mission</a>
+            <div className="browse-nav-link">
+              <span className="navbar-item" href="#">
+                Browse Collections</span>
+            </div>
+            <div className="mission-nav-link">
+              <span className="navbar-item" href="#">
+                Our Mission</span>
+            </div>
           </div>
 
           <div className="navbar-end">
