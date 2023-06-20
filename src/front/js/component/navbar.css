@@ -1,6 +1,7 @@
 .navbar {
     background-color: #ffd872;
-    padding: 5px;
+    padding: 0px;
+    margin: auto;
     width: 100%;
     display:flexbox;
     flex-direction: row;
@@ -60,6 +61,7 @@
   .navbar-end {
     margin-left: 5px;
     display:inline-block;
+    padding-top: 2px;
   }
 
 /* USER PROFILE CONTAINER */
@@ -74,6 +76,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
   }
 
   .navbar-dropdown-link {
