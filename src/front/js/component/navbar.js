@@ -8,6 +8,7 @@ import "./navbar.css";
 import Login from "./login";
 
 export const Navbar = () => {
+  
   return (
     <div>
       <nav className="navbar">

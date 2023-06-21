@@ -35,7 +35,6 @@ db.Column("piece_id", db.ForeignKey("piece.id"))
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-    # Profile Picture
 
     name = db.Column(db.String(250), unique= False, nullable= False)
     phone_number = db.Column(db.Integer, unique=False, nullable=True)
@@ -43,6 +42,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
+    pieces = db.relationship('Piece', uselist=True, backref=db.backref("user", uselist=False))
     beloved_pieces = db.relationship('Piece',secondary="beloved_pieces")
     beloved_collections = db.relationship('Collection',secondary="beloved_collections")
 
@@ -62,12 +62,15 @@ class User(db.Model):
 class Piece(db.Model):
     __tablename__ = "piece"
     id = db.Column(db.Integer, primary_key=True)
-    # user_id = db.Column(db.Integer,ForeignKey('user.id'))
+    filename = db.Column(db.String(256), unique=True)
+    filetype = db.Column(db.Enum("image", "video", "audio", name="MediaType"), default="image")
     title = db.Column(db.String(250))
     description = db.Column(db.String(250))
     upload_date = db.Column(db.DateTime)
     beloved_by = db.Column(db.Integer)
-    # piece = db.relationship('Piece',secondary="beloved_pieces")
+
+    collection_id = db.Column(db.Integer, db.ForeignKey("collection.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class Collection(db.Model):
     __tablename__ = 'collection'
@@ -75,7 +78,7 @@ class Collection(db.Model):
     title = db.Column(db.String(250))
     description = db.Column(db.String(250))
     beloved_by = db.Column(db.Integer)
-    collection = db.relationship('Piece',secondary="collection_pieces")
+    pieces = db.relationship('Piece', uselist=True, backref=db.backref("collection", uselist=False))
 
 class Settings(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -89,9 +92,4 @@ class MediaType(db.Enum):
     VIDEO = 'video'
     AUDIO = 'audio'
 
-
-class Media(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    filename = db.Column(db.String(256), unique=True)
-    filetype = db.Column(db.Enum("image", "video", "audio", name="MediaType"), default="image")
 

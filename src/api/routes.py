@@ -109,7 +109,7 @@ def upload_file():
 
     # Attempt to upload the file to S3.
     if upload_file_to_s3(request_file, filename):
-        dbfile = Media(
+        dbfile = Piece(
             filename=filename,
             filetype="IMAGE"
         )
