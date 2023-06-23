@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { store, actions } = useContext(Context);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const handleEmailChange = (event) => {
@@ -18,15 +19,15 @@ const Login = () => {
 
     // Perform login validation here (e.g., making an API call)
     // You can replace the following code with your actual implementation
-    if (email === 'example@example.com' && password === 'password') {
-      alert('Login successful!');
+    if (email === "example@example.com" && password === "password") {
+      alert("Login successful!");
       // Clear email and password fields
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
       // Close the modal
       setShowModal(false);
     } else {
-      alert('Invalid email or password. Please try again.');
+      alert("Invalid email or password. Please try again.");
     }
   };
 
@@ -36,7 +37,9 @@ const Login = () => {
 
   return (
     <div>
-      <button onClick={handleModalToggle}>Login</button>
+      <button id="toggleButton" onClick={handleModalToggle}>
+        Login
+      </button>
 
       {showModal && (
         <div className="modal">
@@ -44,7 +47,7 @@ const Login = () => {
             <span className="close" onClick={handleModalToggle}>
               &times;
             </span>
-            <div className='login-title'>Login</div>
+            <div className="login-title">Login</div>
             <form onSubmit={handleLogin}>
               <label>
                 Email:
@@ -58,7 +61,7 @@ const Login = () => {
               <br />
               <label>
                 Password:
-                <br/>
+                <br />
                 <input
                   type="password"
                   value={password}
@@ -66,7 +69,7 @@ const Login = () => {
                 />
               </label>
               <br />
-              <div className='submit-login-btn'>
+              <div className="submit-login-btn">
                 <button type="submit">Login</button>
               </div>
             </form>
@@ -75,7 +78,20 @@ const Login = () => {
       )}
 
       <style>
-      {`
+        {`
+        #toggleButton {
+          background-color: rgb(255, 216, 114);
+          border: none;
+          color: rgb(252, 98, 56);
+          position: absolute;
+          bottom: 0px;
+          right: 0em;
+          font-size: 13px;
+          cursor: cell;
+        }
+        #toggleButton:hover {
+          color: rgb(11, 9, 9);
+        }
         .modal {
           display: flex;
           justify-content: center;
@@ -102,6 +118,8 @@ const Login = () => {
 
         .modal-content button{
           margin-top: 3px;
+          margin: auto;
+          font-size: 16px;
         }
 
         .close {

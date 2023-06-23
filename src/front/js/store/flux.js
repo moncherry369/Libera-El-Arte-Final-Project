@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token:"",
-      msg:""
+      msg:"",
+      user:null
     },
     actions: {
       dehydrate: () => {

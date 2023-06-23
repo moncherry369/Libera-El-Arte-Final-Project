@@ -6,9 +6,14 @@ import { Dropdown } from "bootstrap";
 import "../../img/lea-navbar-logo.jpg";
 import "./navbar.css";
 import Login from "./login";
+import Userprofile from "./userprofile";
 
 export const Navbar = () => {
-  
+  const [Loggedin, setLoggedin] = useState(false);
+  const handleLoginChange = (event) => {
+    setLoggedin(event.target.value);
+  };
+
   return (
     <div>
       <nav className="navbar">
@@ -39,28 +44,7 @@ export const Navbar = () => {
           </div>
 
           <div className="navbar-end">
-            <div className="navbar-item has-dropdown is-hoverable">
-              <div className="user-navbar-info">
-                <img
-                  className="rounded-circle"
-                  src="https://placekitten.com/122"
-                  id="nav-profpic"
-                />
-              </div>
-            
-              <a className="navbar-dropdown-link">Your Atelier</a>
-              <div className="navbar-dropdown">
-                <a className="navbar-item dropdown-item" href="#">
-                  Your creations
-                </a>
-                <a className="navbar-item dropdown-item" href="#">
-                  Beloved Works
-                </a>
-                <a className="navbar-item dropdown-item" href="#">
-                  Settings
-                </a>
-              </div>
-            </div>
+            {Loggedin ? <Userprofile /> : <Login />}
           </div>
         </div>
       </nav>
