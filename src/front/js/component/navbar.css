@@ -1,0 +1,112 @@
+.navbar {
+  background-color: rgb(255, 216, 114);
+  padding: 0px;
+  margin: auto;
+  width: 100%;
+  display: flexbox;
+  flex-direction: row;
+}
+/* L.E.A. BRAND */
+.navbar-brand {
+  display: flex;
+  flex-direction: row;
+  height: 83px;
+  margin-right: auto;
+  min-width: 13em;
+  position: relative;
+}
+/* L.E.A. LOGO */
+.navbar-logo {
+  position: absolute;
+  bottom: 0;
+  margin: 3px;
+}
+/*  LOGO IMAGE */
+#navbarImgLogo {
+  width: 60px;
+  height: 60px;
+  border: rgb(252, 98, 56) 2px dashed;
+  border-radius: 50%;
+}
+
+/* LIBERA EL ARTE */
+.brand-text {
+  padding-left: 5px;
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+}
+
+/* NAV LINK CONTAINER */
+.navbar-start {
+  margin-right: 10px;
+  position: relative;
+  min-width: 12em;
+}
+
+.browse-nav-link {
+  position: absolute;
+  bottom: 0;
+}
+
+.mission-nav-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+/* PROFILE AND DROPDOWN CONTAINER */
+.navbar-end {
+  display: inline;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  margin-right: 5px;
+  margin-bottom: 1px;
+}
+
+/* USER PROFILE CONTAINER */
+.user-navbar-info {
+  display: block;
+}
+/* NAV PROFILE THUMBNAIL */
+#nav-profpic {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.navbar-dropdown-link {
+  cursor: crosshair;
+  color: rgb(252, 98, 56);
+  text-decoration: none;
+  font-size: small;
+  width: 100px;
+  align-items: center;
+}
+
+.navbar-item {
+  cursor: cell;
+  color: rgb(252, 98, 56);
+  text-decoration: none;
+  font-size: small;
+  text-align: left;
+}
+
+.navbar-item:hover {
+  color: rgb(11, 9, 9);
+}
+
+.navbar-menu {
+  display: inline-flex;
+  margin-right: 0px;
+  /* min-width: 255px; */
+  height: 83px;
+  position: relative;
+}
+
+
