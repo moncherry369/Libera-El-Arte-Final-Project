@@ -5,8 +5,9 @@ import reactDom from "react-dom";
 import { Dropdown } from "bootstrap";
 import "../../img/lea-navbar-logo.jpg";
 import "./navbar.css";
-import Login from "./login";
+import Loginsignform from "./loginsignform";
 import Userprofile from "./userprofile";
+import Loginsignpop from "./loginsignpop";
 
 export const Navbar = () => {
   const [Loggedin, setLoggedin] = useState(false);
@@ -32,19 +33,19 @@ export const Navbar = () => {
         <div className="navbar-menu">
           <div className="navbar-start">
             <div className="browse-nav-link">
-              <span className="navbar-item" href="/login">
+              <span className="navbar-item" href="#">
                 Browse Collections
               </span>
             </div>
             <div className="mission-nav-link">
-              <span className="navbar-item" href="{Login}">
+              <span className="navbar-item" href="#">
                 Our Mission
               </span>
             </div>
           </div>
 
           <div className="navbar-end">
-            {Loggedin ? <Userprofile /> : <Login />}
+            {Loggedin ? <Userprofile /> : <Loginsignpop />}
           </div>
         </div>
       </nav>

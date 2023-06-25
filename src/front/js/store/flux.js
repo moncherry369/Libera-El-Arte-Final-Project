@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore(JSON.parse(sessionStorage.getItem("store")));
       },
 
-      login: (email, password) => {
+      login: async (email, password) => {
         const options = {
           headers: {
             "Content-Type": "application/json",
@@ -22,13 +22,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "POST",
           body: JSON.stringify({ email: email, password: password }),
         };
-        return fetch(`${process.env.BACKEND_URL}/api/login`, options)
-          .then((resp) => resp.json())
-          .then((data) => setStore(data))
-          .then(() => getActions().dehydrate());
+        const resp = await fetch(`${process.env.BACKEND_URL}/api/login`, options);
+        const data = await resp.json();
+        setStore(data);
+        return getActions().dehydrate();
       },
 
-      sign_up: (email, password, name) => {
+      sign_up: async (email, password, name) => {
         const options = {
           headers: {
             "Content-Type": "application/json",
@@ -40,9 +40,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: name,
           }),
         };
-        return fetch(`${process.env.BACKEND_URL}/api/signup`, options)
-          .then((resp) => resp.json())
-          .then((data) => setStore(data));
+        const resp = await fetch(`${process.env.BACKEND_URL}/api/signup`, options);
+        const data = await resp.json();
+        return setStore(data);
       },
     },
   };
