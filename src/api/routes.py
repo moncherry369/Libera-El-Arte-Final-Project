@@ -2,9 +2,10 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, create_refresh_token
 from api.models import db, User, Settings, MediaType, Piece, Collection
 from api.utils import generate_sitemap, APIException
+from werkzeug.utils import secure_filename
 import logging
 import boto3
 from botocore.exceptions import ClientError
@@ -64,25 +65,25 @@ def handle_signup():
             'msg': 'The email address already exists. Please login to your account to continue.'
         }), 409
 
-    user = User(email=email, password=password, is_active=True)
+    user = User(email=email, password=password, name=name, is_active=True)
 
-    try:
-        db.session.add(user)
-        db.session.commit()
-        access_token = create_access_token(identity=user.email)
-        refresh_token = create_refresh_token(identity=user.email)
-        return jsonify({
-            'msg': 'User created successfully.',
-            'access_token': access_token,
-            'refresh_token': refresh_token
-         }), 201
+    # try:
+    db.session.merge(user)
+    db.session.commit()
+    access_token = create_access_token(identity=user.email)
+    refresh_token = create_refresh_token(identity=user.email)
+    return jsonify({
+        'msg': 'User created successfully.',
+        'access_token': access_token,
+        'refresh_token': refresh_token
+        }), 201
 
-    except Exception as e:
-        return jsonify({'msg': 'An error occurred while creating the user.'}), 500
+    # except Exception as e:
+    #     return jsonify({'msg': 'An error occurred while creating the user.'}), 500
 
 # AWS S3 CONNECTION
 def upload_file_to_s3(file_bytes, object_name):
-    aws_info = Setting.query.filter_by(key="aws/secrets").first()
+    aws_info = Settings.query.filter_by(key="aws/secrets").first()
     s3_client = boto3.resource(
         's3',
         aws_access_key_id=aws_info.value["s3AccessKey"],
@@ -112,7 +113,7 @@ def upload_file():
     if upload_file_to_s3(request_file, filename):
         dbfile = Piece(
             filename=filename,
-            filetype="IMAGE"
+            filetype="image"
         )
         db.session.add(dbfile)
         db.session.commit()
