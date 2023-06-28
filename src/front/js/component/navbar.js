@@ -11,6 +11,9 @@ import Loginsignpop from "./loginsignpop";
 
 export const Navbar = () => {
   const [Loggedin, setLoggedin] = useState(true);
+  // const frontendUrl = process.env.FRONTEND_URL
+
+
   const handleLoginChange = (event) => {
     setLoggedin(event.target.value);
   };
@@ -18,6 +21,7 @@ export const Navbar = () => {
   return (
     <div>
       <nav className="navbar">
+        {/* this should take you to homepage */}
         <div className="navbar-brand">
           <div className="navbar-logo">
             <img
@@ -33,8 +37,8 @@ export const Navbar = () => {
         <div className="navbar-menu">
           <div className="navbar-start">
             <div className="browse-nav-link">
-              <span className="navbar-item" href="#">
-                Browse Collections
+              <span className="navbar-item" href="">
+                Browse Collection
               </span>
             </div>
             <div className="mission-nav-link">

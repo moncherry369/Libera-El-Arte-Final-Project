@@ -21,21 +21,48 @@ const Fileupload = () => {
 
   return (
     <>
-      <button className="btn btn-primary" onClick={handleSubmit}>
-        Submit
-      </button>
-      <div class="mb-3">
+      <div className="mb-3">
         <label htmlFor="formFile" className="form-label">
-          Default file input example
+          <u>Upload your pieces here:</u>
         </label>
-        <input
-          className="form-control"
-          type="file"
-          id="formFile"
-          onChange={handleFileChange}
-        />
+        <div className="choose-file-container">
+          <input
+            className="form-control"
+            type="file"
+            id="formFile"
+            onChange={handleFileChange}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={handleSubmit}>
+        Upload
+        </button>
       </div>
-      {typeof files}
+      <style>
+        {`
+        .mb-3 {
+          justify-content: center;
+          margin: auto;
+          padding: 7px;
+          text-align: center;
+          border: 2px dashed #ffd872;
+        }
+        .form-label {
+          font-size: 20px;
+        }
+        .choose-file-container {
+          margin: auto;
+        }
+        .btn {
+          background-color: #ffd872;
+          color: #6c88c4;
+          margin-top: .8em;
+        }
+        .btn:hover {
+          color: #ffd872;
+        }
+        `}
+      </style>
+      {/* {typeof files} */}
     </>
   );
 };

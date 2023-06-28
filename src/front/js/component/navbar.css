@@ -46,14 +46,14 @@
 }
 
 .browse-nav-link {
-  position: absolute;
-  bottom: 0;
+  display: inline-block;
+  margin: 3px;
 }
 
 .mission-nav-link {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  display: inline-block;
+  margin: 3px;
+  margin-right: 66px;
 }
 /* PROFILE AND DROPDOWN CONTAINER */
 .navbar-end {

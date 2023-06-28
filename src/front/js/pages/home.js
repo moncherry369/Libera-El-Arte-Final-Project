@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import Loginsignpop from "../component/loginsignpop";
-import SignupForm from "../component/loginsignform";
-import Fileupload from "../component/fileupload";
+import Jumbotron from "../component/jumbotron";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -12,7 +10,7 @@ export const Home = () => {
   return (
     <>
       <div>
-        <Fileupload />
+        <Jumbotron/>
       </div>
     </>
   );
