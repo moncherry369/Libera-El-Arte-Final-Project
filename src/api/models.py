@@ -71,6 +71,17 @@ class Piece(db.Model):
     collection_id = db.Column(db.Integer, db.ForeignKey("collection.id"))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    def serialize(self, base_url=""):
+        return {
+            "id": self.id,
+            "filename": f"""https://{base_url}/{self.filename}""",
+            "filetype": self.filetype,
+            "title": self.title,
+            "description": self.description,
+            "upload_date": self.upload_date,
+            "user": self.user.serialize() if self.user is not None else None,
+        }
+
 class Collection(db.Model):
     __tablename__ = 'collection'
     id = db.Column(db.Integer, primary_key=True)

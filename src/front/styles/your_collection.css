@@ -1,0 +1,18 @@
+body {
+  background-color: #6c88c4;
+}
+.file-uploader-container {
+  margin: auto;
+}
+.your-collection-container {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.col-sm-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-card-container {
+  width: 20rem;
+}

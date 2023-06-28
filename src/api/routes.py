@@ -98,7 +98,16 @@ def upload_file_to_s3(file_bytes, object_name):
     return True
   
 @api.route('/assets', methods=['POST'])
+@jwt_required()
 def upload_file():
+    """
+    This needs to be @jwt_required() and add the current user to the piece.
+    get_jwt_identity() will return the current user's email when used in a
+    route that has the @jwt_required() decorator, you can use that to get
+    the user from the db.
+    """
+    db_user = User.query.filter_by(email=get_jwt_identity()).first()
+
     # Check if there is a file.
     if 'file' not in request.files:
         return jsonify(msg='No file found'), 400
@@ -113,7 +122,8 @@ def upload_file():
     if upload_file_to_s3(request_file, filename):
         dbfile = Piece(
             filename=filename,
-            filetype="image"
+            filetype="image",
+            # user=db_user
         )
         db.session.add(dbfile)
         db.session.commit()
@@ -127,3 +137,30 @@ def get_file_URL(filename: str):
         url=f"""https://{aws_info.value["distDomainName"]}/{filename}""",
         media_type=file_info.filetype.value,
     )
+
+@api.route('/pieces', methods=['GET'])
+def get_pieces():
+    aws_info = Settings.query.filter_by(key="aws/secrets").first()
+    pieces = Piece.query.all()
+    response = []
+    for piece in pieces:
+        response.append(piece.serialize(
+            aws_info.value["distDomainName"]
+        ))
+    return(jsonify(pieces = response))
+
+
+@api.route('/user/pieces', methods=['GET'])
+@jwt_required() # This requires login
+def get_user_pieces():
+    aws_info = Settings.query.filter_by(key="aws/secrets").first()
+    # This allows you to take the info from the token and grab the user from the db.
+    db_user = User.query.filter_by(email=get_jwt_identity()).first()
+    pieces = Piece.query.filter_by(user=db_user).all()
+    response = []
+    for piece in pieces:
+        response.append(piece.serialize(
+            aws_info.value["distDomainName"]
+        ))
+    return(jsonify(pieces = response))
+

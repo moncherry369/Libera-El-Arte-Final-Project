@@ -1,74 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Imagecard from "../component/imagecard";
+import "../../styles/your_collection.css";
 
 export const Browsecollection = () => {
+  const [pieces, setPieces] = useState([]);
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/pieces")
+      .then((resp) => resp.json())
+      .then((data) => setPieces(data.pieces));
+  }, []);
+
   return (
     <>
       <div className="collection-container">
-        <div className="row">
-          <div className="col-sm-3">
-            <div className="card-holder">
-                <Imagecard />
+        <div className="row d-flex flex-row justify-content-around">
+          {pieces.map((piece) => (
+            <div className="image-card-container">
+              <Imagecard imageUrl={piece?.filename} />
             </div>
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-        </div>
-        {/* row 2 */}
-        <div className="row">
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-        </div>
-        {/* row2 3 */}
-        <div className="row">
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
+          ))}
+          {/*  */}
         </div>
       </div>
-      <style>
-        {`
-          body{
-              background-color: #6c88c4;
-              overflow: none;
-          }
-          .collection-container{
-              padding-top: 2em;
-              padding-bottom: 2em;
-          }
-          .col-sm-3 {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-          }
-        `}
-      </style>
     </>
   );
 };

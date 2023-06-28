@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Fileupload from "../component/fileupload";
 import Imagecard from "../component/imagecard";
 
+import "../../styles/your_collection.css";
+import { Context } from "../store/appContext";
+
 export const Yourcollection = () => {
+  const [pieces, setPieces] = useState([]);
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.rehydrate();
+    fetch(process.env.BACKEND_URL + "/api/user/pieces", {
+      headers: {
+        Authorization: `Bearer ${store.token}`,
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => setPieces(data.pieces));
+  }, []);
+
   return (
     <>
       <div className="your-collection-container">
@@ -10,64 +27,16 @@ export const Yourcollection = () => {
           <div className="file-uploader-container col-sm-3">
             <Fileupload />
           </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
         </div>
-        <div className="row">
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
-          <div className="col-sm-3">
-            <Imagecard />
-          </div>
+        <div className="row d-flex flex-row justify-content-around">
+          {pieces.map((piece) => (
+            <div className="image-card-container">
+              <Imagecard imageUrl={piece?.filename} />
+            </div>
+          ))}
+          {/*  */}
         </div>
       </div>
-      <style>
-        {`
-            body {
-                background-color: #6c88c4;
-            }
-            .file-uploader-container {
-                margin: auto;
-            }
-            .your-collection-container{
-                padding-top: 2em;
-                padding-bottom: 2em;
-            }
-            .col-sm-3 {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        `}
-      </style>
     </>
   );
 };

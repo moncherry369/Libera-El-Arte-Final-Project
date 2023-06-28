@@ -47,6 +47,7 @@
 
 .browse-nav-link {
   display: inline-block;
+  height: 100%;
   margin: 3px;
 }
 
@@ -107,6 +108,7 @@
   /* min-width: 255px; */
   height: 83px;
   position: relative;
+  align-items: flex-end;
 }
 
 

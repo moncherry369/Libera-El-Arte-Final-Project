@@ -15,7 +15,7 @@ const Userprofile = () => {
 
         <a className="navbar-dropdown-link">Your Atelier</a>
         <div className="navbar-dropdown">
-          <a className="navbar-item dropdown-item" href="#">
+          <a className="navbar-item dropdown-item" href="/your-collection">
             Your creations
           </a>
           <a className="navbar-item dropdown-item" href="#">

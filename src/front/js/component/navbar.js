@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import reactDom from "react-dom";
@@ -10,9 +10,9 @@ import Userprofile from "./userprofile";
 import Loginsignpop from "./loginsignpop";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
   const [Loggedin, setLoggedin] = useState(true);
   // const frontendUrl = process.env.FRONTEND_URL
-
 
   const handleLoginChange = (event) => {
     setLoggedin(event.target.value);
@@ -37,19 +37,19 @@ export const Navbar = () => {
         <div className="navbar-menu">
           <div className="navbar-start">
             <div className="browse-nav-link">
-              <span className="navbar-item" href="">
+              <a className="navbar-item" href="/browse-collection">
                 Browse Collection
-              </span>
+              </a>
             </div>
             <div className="mission-nav-link">
-              <span className="navbar-item" href="#">
+              <a className="navbar-item" href="/">
                 Our Mission
-              </span>
+              </a>
             </div>
           </div>
 
           <div className="navbar-end">
-            {Loggedin ? <Userprofile /> : <Loginsignpop />}
+            {store.token ? <Userprofile /> : <Loginsignpop />}
           </div>
         </div>
       </nav>

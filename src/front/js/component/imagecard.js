@@ -1,29 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 
-const Imagecard = () => {
-  const [imageUrl, setImageUrl] = useState('');
-
-  // useEffect(() => {
-  //   const fetchImageUrl = async () => {
-  //     try {
-  //       const response = await fetch(`/api/assets/${filename}`);
-  //       const data = await response.json();
-  //       setImageUrl(data.url);
-  //     } catch (error) {
-  //       console.error('Error fetching image URL:', error);
-  //     }
-  //   };
-
-  //   fetchImageUrl();
-  // }, [filename]);
+const Imagecard = (props) => {
+  
 
   return (
     <>
       <div className="card-container">
         <div className="img-container">
-          {imageUrl ? (
-          <img src={imageUrl} alt="File" />
+          {props.imageUrl ? (
+          <img src={props.imageUrl} alt="File" />
           ) : (
             <span>Loading image...</span>
           )}
