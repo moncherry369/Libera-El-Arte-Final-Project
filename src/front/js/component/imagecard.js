@@ -15,7 +15,7 @@ const Imagecard = (props) => {
           )}
         </div>
         <div className="img-card-text">
-          <p>This is a picture ... except not really cause yk...</p>
+          Created by: {props.name}
         </div>
       </div>
 
@@ -24,7 +24,7 @@ const Imagecard = (props) => {
         .card-container {
           margin: 7px;
           width: 275px;
-          height: 300px;
+          
           text-align: center;
           background-color: white;
           border: 1px solid;
@@ -35,8 +35,8 @@ const Imagecard = (props) => {
           width: 100%;
           height: auto;
         }
-        .img-card-text p {
-          font-size: 12px;
+        .img-card-text {
+          font-size: 10px;
         }
         `}
       </style>

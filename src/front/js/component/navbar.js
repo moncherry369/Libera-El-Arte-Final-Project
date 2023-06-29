@@ -23,15 +23,17 @@ export const Navbar = () => {
       <nav className="navbar">
         {/* this should take you to homepage */}
         <div className="navbar-brand">
-          <div className="navbar-logo">
-            <img
-              className=""
-              href="#top"
-              src="https://i.ibb.co/v3992Zz/lea-logo.jpg"
-              id="navbarImgLogo"
-            />
-          </div>
-          <h2 className="brand-text">Libera El Arte</h2>
+          <a href="/">
+            <div className="navbar-logo">
+              <img
+                className=""
+                href="#top"
+                src="https://i.ibb.co/v3992Zz/lea-logo.jpg"
+                id="navbarImgLogo"
+              />
+            </div>
+            <h2 className="brand-text">Libera El Arte</h2>
+          </a>
         </div>
 
         <div className="navbar-menu">

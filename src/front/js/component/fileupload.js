@@ -1,10 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { json } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Fileupload = () => {
   const [files, setFiles] = useState([]);
-  const {state, actions} = useContext(Context);
+  const { store, actions } = useContext(Context);
+  useEffect(() => {
+    actions.rehydrate();
+  }, []);
 
   const handleFileChange = (ev) => {
     // console.log(ev.target.files);
@@ -18,7 +21,7 @@ const Fileupload = () => {
     fetch(process.env.BACKEND_URL + "/api/assets", {
       method: "POST",
       headers: {
-
+        Authorization: `Bearer ${store.token}`,
       },
       body: formdata,
     }).then((response) => console.log(response));
@@ -39,7 +42,7 @@ const Fileupload = () => {
           />
         </div>
         <button className="btn btn-primary" onClick={handleSubmit}>
-        Upload
+          Upload
         </button>
       </div>
       <style>

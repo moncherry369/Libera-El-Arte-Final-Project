@@ -1,9 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      token:"",
-      msg:"",
-      user:null
+      token: "",
+      msg: "",
+      user: null,
     },
     actions: {
       dehydrate: () => {
@@ -22,10 +22,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "POST",
           body: JSON.stringify({ email: email, password: password }),
         };
-        const resp = await fetch(`${process.env.BACKEND_URL}/api/login`, options);
+        const resp = await fetch(
+          `${process.env.BACKEND_URL}/api/login`,
+          options
+        );
         const data = await resp.json();
         setStore(data);
-        return getActions().dehydrate();
+        getActions().dehydrate();
+      },
+      log_out: () => {setStore({
+        token: "",
+        msg: "",
+        user: null,
+      })
+      getActions().dehydrate();
       },
 
       sign_up: async (email, password, name) => {
@@ -38,9 +48,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             email: email,
             password: password,
             name: name,
+            phone_number: phone_number
           }),
         };
-        const resp = await fetch(`${process.env.BACKEND_URL}/api/signup`, options);
+        const resp = await fetch(
+          `${process.env.BACKEND_URL}/api/signup`,
+          options
+        );
         const data = await resp.json();
         return setStore(data);
       },

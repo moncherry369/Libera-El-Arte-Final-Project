@@ -15,6 +15,12 @@
   min-width: 13em;
   position: relative;
 }
+.navbar-brand a {
+  color: rgb(252, 98, 56);
+}
+.navbar-brand a:hover{
+  color: rgb(0, 0, 0);
+}
 /* L.E.A. LOGO */
 .navbar-logo {
   position: absolute;

@@ -18,11 +18,11 @@ const Userprofile = () => {
           <a className="navbar-item dropdown-item" href="/your-collection">
             Your creations
           </a>
-          <a className="navbar-item dropdown-item" href="#">
-            Beloved Works
+          <a className="navbar-item dropdown-item" href="/contact-info">
+            Contact Info
           </a>
           <a className="navbar-item dropdown-item" href="#">
-            Settings
+            LOGOUT
           </a>
         </div>
         <style>

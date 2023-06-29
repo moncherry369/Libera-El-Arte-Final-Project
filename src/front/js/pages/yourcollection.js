@@ -5,6 +5,8 @@ import Imagecard from "../component/imagecard";
 import "../../styles/your_collection.css";
 import { Context } from "../store/appContext";
 
+
+
 export const Yourcollection = () => {
   const [pieces, setPieces] = useState([]);
   const { store, actions } = useContext(Context);
@@ -29,9 +31,9 @@ export const Yourcollection = () => {
           </div>
         </div>
         <div className="row d-flex flex-row justify-content-around">
-          {pieces.map((piece) => (
+          {pieces?.map((piece) => (
             <div className="image-card-container">
-              <Imagecard imageUrl={piece?.filename} />
+              <Imagecard imageUrl={piece.filename} name={piece.user?.name}/>
             </div>
           ))}
           {/*  */}

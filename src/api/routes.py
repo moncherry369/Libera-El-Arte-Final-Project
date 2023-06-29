@@ -36,6 +36,7 @@ def handle_login():
     payload = {
         "token": access_token,
         'msg': 'Login Successful.',
+        "user": user.serialize()
     }
     return jsonify(payload), 200
 
@@ -123,7 +124,7 @@ def upload_file():
         dbfile = Piece(
             filename=filename,
             filetype="image",
-            # user=db_user
+            user=db_user
         )
         db.session.add(dbfile)
         db.session.commit()
