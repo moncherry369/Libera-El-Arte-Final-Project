@@ -18,7 +18,7 @@
 .navbar-brand a {
   color: rgb(252, 98, 56);
 }
-.navbar-brand a:hover{
+.navbar-brand a:hover {
   color: rgb(0, 0, 0);
 }
 /* L.E.A. LOGO */
@@ -58,7 +58,7 @@
 }
 
 .mission-nav-link {
-  display: inline-block;
+  display: none;
   margin: 3px;
   margin-right: 66px;
 }
@@ -88,11 +88,11 @@
 }
 
 .navbar-dropdown-link {
-  cursor: crosshair;
+  cursor: cell;
   color: rgb(252, 98, 56);
   text-decoration: none;
   font-size: small;
-  width: 100px;
+  width: 100%;
   align-items: center;
 }
 
@@ -116,5 +116,3 @@
   position: relative;
   align-items: flex-end;
 }
-
-

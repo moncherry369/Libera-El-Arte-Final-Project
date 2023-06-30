@@ -16,20 +16,22 @@ function Jumbotron() {
           </div>
           <p className="mission-statement">
             “Libera El Arte” translates to liberate the art. This is the core
-            value of L.E.A. <br/>We look forward to providing you the platform to
-            showcase your collections and works with full freedom of expression.
-            <br/>Get recognized by art exhibits that will value your unique
+            value of L.E.A. <br />
+            We look forward to providing you the platform to showcase your
+            collections and works with full freedom of expression.
+            <br />
+            Get recognized by art exhibits that will value your unique
             creativity.
           </p>
-          <button className="jumbo-btn">
+          {/* <button className="jumbo-btn">
             Find out more about our mission...
-          </button>
+          </button> */}
         </div>
       </div>
       <style>
         {`
         body {
-            font-family: 'Roboto';
+          
         }
         .jumbotron{
             background-color: #e77577;

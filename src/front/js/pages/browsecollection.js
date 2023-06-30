@@ -26,6 +26,13 @@ export const Browsecollection = () => {
           {/*  */}
         </div>
       </div>
+      <style>
+        {`
+        .collection-container {
+          margin-top: 2em;
+        }
+        `}
+      </style>
     </>
   );
 };

@@ -68,7 +68,7 @@ const Loginsignpop = () => {
             border: none;
             color: rgb(252, 98, 56);
             position: absolute;
-            bottom: 0px;
+            bottom: 2.5px;
             right: 0em;
             font-size: 13px;
             cursor: cell;

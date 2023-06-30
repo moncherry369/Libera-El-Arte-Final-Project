@@ -21,9 +21,9 @@ const Userprofile = () => {
           <a className="navbar-item dropdown-item" href="/contact-info">
             Contact Info
           </a>
-          <a className="navbar-item dropdown-item" href="#">
+          {/* <a className="navbar-item dropdown-item" href="#">
             LOGOUT
-          </a>
+          </a> */}
         </div>
         <style>
             {`
@@ -47,6 +47,7 @@ const Userprofile = () => {
                 text-decoration: none;
                 font-size: small;
                 width: 100px;
+                margin-right: 2px;
                 align-items: center;
             }
 
@@ -76,7 +77,7 @@ const Userprofile = () => {
                 position: absolute;
                 background-color: rgba(253, 226, 158, 0.686);
                 text-decoration: none;
-                width: 40%;
+                width: 100%;
                 margin: auto;
                 /* padding: 2px; */
                 transform: translateX(-20%);

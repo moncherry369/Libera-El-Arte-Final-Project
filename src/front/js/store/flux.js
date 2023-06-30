@@ -30,12 +30,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore(data);
         getActions().dehydrate();
       },
-      log_out: () => {setStore({
-        token: "",
-        msg: "",
-        user: null,
-      })
-      getActions().dehydrate();
+      log_out: () => {
+        setStore({
+          token: "",
+          msg: "",
+          user: null,
+        });
+        getActions().dehydrate();
       },
 
       sign_up: async (email, password, name) => {
@@ -48,7 +49,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             email: email,
             password: password,
             name: name,
-            phone_number: phone_number
           }),
         };
         const resp = await fetch(
